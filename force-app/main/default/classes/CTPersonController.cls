@@ -23,6 +23,7 @@ public with sharing class CTPersonController {
 
         Blob targetBlob = Blob.valueOf('mobileNo');
         Blob hash = Crypto.generateDigest('MD5', targetBlob);
-        String SecureToken = hash.toString();
+        String SecureToken = EncodingUtil.base64Encode(hash);
+        return SecureToken;
     }
 }
